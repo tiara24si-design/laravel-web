@@ -1,0 +1,5 @@
+|CTAG_1663167284_18455859_4204_0
+composer global require laravel/installer
+composer create-project --prefer-dist laravel/laravel laravel-web
+cd laravel-web\
+code .

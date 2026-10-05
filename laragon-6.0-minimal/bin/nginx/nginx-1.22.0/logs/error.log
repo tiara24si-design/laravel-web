@@ -1,0 +1,11 @@
+2025/08/31 23:40:25 [notice] 15952#14792: signal process started
+2025/08/31 23:45:00 [notice] 6848#15784: signal process started
+2025/08/31 23:45:55 [notice] 14532#2484: signal process started
+2025/08/31 23:46:29 [notice] 5480#15888: signal process started
+2026/09/21 07:39:51 [notice] 8276#3352: signal process started
+2026/09/21 07:40:33 [notice] 4716#15044: signal process started
+2026/09/21 07:41:45 [notice] 7044#11028: signal process started
+2026/09/21 07:41:45 [error] 7044#11028: OpenEvent("Global\ngx_stop_15412") failed (2: The system cannot find the file specified)
+2026/09/21 07:56:30 [notice] 8136#8152: signal process started
+2026/09/21 08:16:40 [notice] 8276#14160: signal process started
+2026/09/21 08:22:34 [notice] 3192#2960: signal process started

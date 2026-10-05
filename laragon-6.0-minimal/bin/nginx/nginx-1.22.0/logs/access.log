@@ -1,0 +1,6 @@
+127.0.0.1 - - [31/Aug/2025:23:39:15 +0700] "GET / HTTP/1.1" 200 1746 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+127.0.0.1 - - [31/Aug/2025:23:43:40 +0700] "GET / HTTP/1.1" 200 1746 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+127.0.0.1 - - [31/Aug/2025:23:43:43 +0700] "GET /?q=info HTTP/1.1" 200 83588 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+127.0.0.1 - - [21/Sep/2026:10:58:07 +0700] "GET /mahasiswa/HAHA HTTP/1.1" 500 848449 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+127.0.0.1 - - [21/Sep/2026:10:58:14 +0700] "GET /mahasiswa/HAHA HTTP/1.1" 500 848417 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+127.0.0.1 - - [21/Sep/2026:10:58:20 +0700] "GET /Mahasiswa/HAHA HTTP/1.1" 500 848448 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
