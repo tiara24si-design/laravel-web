@@ -1,335 +1,855 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Politeknik Caltex Riau</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Reservasi Laboratorium</title>
+
+<style>
+- {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #18385f;
+    font-size: 13px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #0b2747;
+    position: fixed;
+    left: 0;
+    top: 0;
+    color: white;
+}
+
+.brand {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #233d5b;
+}
+
+.brand span {
+    color: #42b5ff;
+    margin-left: 4px;
+}
+
+.menu {
+    padding: 15px 12px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 13px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: #d9e7f8;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.menu a:hover,
+.menu a.active {
+    background: #215b98;
+    color: white;
+}
+
+.menu-icon {
+    width: 18px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.logout {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: #d9e7f8;
+    font-size: 12px;
+}
+
+/* MAIN */
+.main {
+    margin-left: 230px;
+    min-height: 100vh;
+}
+
+/* TOPBAR */
+.topbar {
+    height: 58px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    border-bottom: 1px solid #e5edf5;
+}
+
+.hamburger {
+    color: #607994;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.profile-area {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.notification {
+    font-size: 17px;
+    color: #607994;
+    position: relative;
+}
+
+.notification::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #ff405d;
+    border-radius: 50%;
+    position: absolute;
+    right: -2px;
+    top: -1px;
+}
+
+.profile {
+    width: 30px;
+    height: 30px;
+    background: #1768bd;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CONTENT */
+.content {
+    padding: 25px;
+}
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 23px;
+}
+
+.welcome h1 {
+    font-size: 22px;
+    margin-bottom: 7px;
+    color: #17385e;
+}
+
+.welcome p {
+    font-size: 12px;
+    color: #7890aa;
+}
+
+.date {
+    background: white;
+    border: 1px solid #dce7f2;
+    border-radius: 6px;
+    padding: 10px 14px;
+    color: #607994;
+    font-size: 11px;
+}
+
+/* STATISTICS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e1eaf3;
+    border-radius: 10px;
+    padding: 17px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 105px;
+}
+
+.stat-icon {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 19px;
+}
+
+.blue {
+    background: #edf4ff;
+    color: #2468ff;
+}
+
+.green {
+    background: #e8fbf3;
+    color: #00a875;
+}
+
+.orange {
+    background: #fff7e5;
+    color: #ff9800;
+}
+
+.purple {
+    background: #f4edff;
+    color: #994cff;
+}
+
+.stat-text {
+    color: #7890aa;
+    font-size: 11px;
+}
+
+.stat-number {
+    font-size: 23px;
+    font-weight: bold;
+    color: #17385e;
+    margin: 5px 0;
+}
+
+.stat-description {
+    font-size: 10px;
+    color: #98a9bd;
+}
+
+/* LABORATORY */
+.section {
+    background: white;
+    border: 1px solid #e1eaf3;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 22px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 17px;
+}
+
+.section-header h2 {
+    font-size: 15px;
+    color: #17385e;
+}
+
+.section-header a {
+    color: #1768bd;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+/* LAB CARDS */
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.lab-card {
+    border: 1px solid #dce7f2;
+    border-radius: 9px;
+    overflow: hidden;
+    background: white;
+    transition: 0.2s;
+}
+
+.lab-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(30, 70, 110, 0.08);
+}
+
+.lab-banner {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+}
+
+.banner-ti {
+    background: linear-gradient(135deg, #dceaff, #8dbaff);
+}
+
+.banner-si {
+    background: linear-gradient(135deg, #d9f9ed, #8be0bf);
+}
+
+.banner-trk {
+    background: linear-gradient(135deg, #e4e2ff, #aaa4ff);
+}
+
+.banner-animasi {
+    background: linear-gradient(135deg, #ffe5ed, #ffabc8);
+}
+
+.lab-info {
+    padding: 15px;
+}
+
+.lab-info h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #17385e;
+}
+
+.department {
+    font-size: 10px;
+    color: #1768bd;
+    background: #edf5ff;
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.lab-info p {
+    font-size: 11px;
+    line-height: 1.6;
+    color: #8095ac;
+    min-height: 35px;
+}
+
+.lab-details {
+    display: flex;
+    gap: 15px;
+    margin-top: 12px;
+    color: #7890aa;
+    font-size: 10px;
+}
+
+.lab-button {
+    display: block;
+    margin-top: 13px;
+    padding: 9px;
+    text-align: center;
+    text-decoration: none;
+    background: #edf4ff;
+    color: #1768bd;
+    border-radius: 6px;
+    font-size: 11px;
+}
+
+.lab-button:hover {
+    background: #dceaff;
+}
+
+/* RECENT RESERVATION */
+.reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.reservation-table th {
+    background: #f7faff;
+    color: #627b97;
+    padding: 12px;
+    text-align: left;
+    font-size: 10px;
+    border-bottom: 1px solid #e8eef5;
+}
+
+.reservation-table td {
+    padding: 12px;
+    font-size: 11px;
+    color: #7890aa;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.reservation-table tr:last-child td {
+    border-bottom: none;
+}
+
+.badge {
+    padding: 5px 9px;
+    border-radius: 12px;
+    font-size: 9px;
+}
+
+.confirmed {
+    background: #d9f7e8;
+    color: #16845b;
+}
+
+.pending {
+    background: #fff0cb;
+    color: #bd7900;
+}
+
+.completed {
+    background: #e0efff;
+    color: #2879bc;
+}
+
+.cancelled {
+    background: #ffe2e9;
+    color: #d34b68;
+}
+
+/* INFO */
+.info-box {
+    background: #edf5ff;
+    border: 1px solid #c9e0ff;
+    border-radius: 9px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.info-icon {
+    width: 35px;
+    height: 35px;
+    background: #d8eaff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2675cb;
+    font-size: 17px;
+}
+
+.info-box h3 {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.info-box p {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #6885a5;
+}
+
+/* RESPONSIVE */
+@media(max-width: 1100px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 750px) {
+    .sidebar {
+        width: 65px;
+    }
+
+    .brand {
+        font-size: 0;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .brand::after {
+        content: "PCR";
+        font-size: 13px;
+    }
+
+    .menu a {
+        justify-content: center;
+        padding: 12px 5px;
+        font-size: 0;
+    }
+
+    .menu-icon {
+        font-size: 17px;
+    }
+
+    .logout a {
+        font-size: 0;
+    }
+
+    .main {
+        margin-left: 65px;
+    }
+
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media(max-width: 500px) {
+    .content {
+        padding: 12px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
-<body class="bg-[#F4F7FB] text-slate-800 antialiased">
 
-    <div class="flex min-h-screen">
+<body>
 
-        <!-- SIDEBAR -->
-        <aside class="w-64 bg-[#0B2545] text-white flex flex-col justify-between shrink-0">
-            <div>
-                <!-- Logo -->
-                <div class="h-16 flex items-center px-6 border-b border-white/10">
-                    <div class="font-bold text-lg tracking-tight flex items-center gap-1">
-                        <span class="text-white">Politeknik</span>
-                        <span class="text-sky-400">Caltex</span>
-                        <span class="text-white">Riau</span>
-                    </div>
-                </div>
+<!-- SIDEBAR -->
+<aside class="sidebar">
 
-                <!-- Menu Navigasi -->
-                <nav class="p-4 space-y-1.5 mt-2">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-[#1D5B9B] text-white font-medium text-sm shadow-sm">
-                        <i data-lucide="home" class="w-4 h-4"></i>
-                        <span>Dashboard</span>
-                    </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition text-sm">
-                        <i data-lucide="flask-conical" class="w-4 h-4"></i>
-                        <span>Laboratorium</span>
-                    </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition text-sm">
-                        <i data-lucide="calendar-plus" class="w-4 h-4"></i>
-                        <span>Reservasi</span>
-                    </a>
-                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/10 hover:text-white transition text-sm">
-                        <i data-lucide="clipboard-list" class="w-4 h-4"></i>
-                        <span>Riwayat Reservasi</span>
-                    </a>
-                </nav>
-            </div>
-
-            <!-- Tombol Keluar -->
-            <div class="p-4 border-t border-white/10">
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-red-500/20 hover:text-red-300 transition text-sm">
-                    <i data-lucide="log-out" class="w-4 h-4"></i>
-                    <span>Keluar</span>
-                </a>
-            </div>
-        </aside>
-
-        <!-- MAIN CONTENT WRAPPER -->
-        <div class="flex-1 flex flex-col">
-
-            <!-- TOP NAVBAR -->
-            <header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between">
-                <button class="text-slate-500 hover:text-slate-700">
-                    <i data-lucide="menu" class="w-5 h-5"></i>
-                </button>
-
-                <div class="flex items-center gap-5">
-                    <!-- Notifikasi -->
-                    <button class="relative text-slate-600 hover:text-slate-900">
-                        <i data-lucide="bell" class="w-5 h-5"></i>
-                        <span class="absolute -top-0.5 -right-0.5 w-2 h-2 bg-red-500 rounded-full"></span>
-                    </button>
-
-                    <!-- User Profile -->
-                    <div class="flex items-center gap-2 cursor-pointer">
-                        <div class="w-8 h-8 rounded-full bg-[#1565C0] text-white flex items-center justify-center">
-                            <i data-lucide="user" class="w-4 h-4"></i>
-                        </div>
-                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
-                    </div>
-                </div>
-            </header>
-
-            <!-- CONTENT AREA -->
-            <main class="p-6 lg:p-8 max-w-[1400px] w-full mx-auto space-y-6">
-
-                <!-- Header Sapaan & Tanggal -->
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <div>
-                        <h1 class="text-2xl font-bold text-[#0B2545]">Selamat Datang!</h1>
-                        <p class="text-sm text-slate-500 mt-0.5">Berikut adalah informasi dan ringkasan terkait reservasi laboratorium Anda.</p>
-                    </div>
-                    <div class="flex items-center gap-2 text-xs text-slate-500 bg-white px-3 py-2 rounded-lg border border-slate-200 self-start">
-                        <i data-lucide="calendar" class="w-4 h-4 text-slate-400"></i>
-                        <span>Senin, 4 November 2024</span>
-                    </div>
-                </div>
-
-                <!-- 4 KARTU STATISTIK -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                    <!-- Card 1 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="flask-conical" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-medium text-slate-500">Total Laboratorium</p>
-                            <p class="text-2xl font-bold text-slate-800 my-0.5">{{ $stats['total_lab'] }}</p>
-                            <p class="text-[11px] text-slate-400">Laboratorium tersedia</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="calendar-check" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-medium text-slate-500">Reservasi Saya</p>
-                            <p class="text-2xl font-bold text-slate-800 my-0.5">{{ $stats['reservasi_saya'] }}</p>
-                            <p class="text-[11px] text-slate-400">Reservasi aktif</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center shrink-0">
-                            <i data-lucide="clock" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-medium text-slate-500">Menunggu Konfirmasi</p>
-                            <p class="text-2xl font-bold text-slate-800 my-0.5">{{ $stats['menunggu_konfirmasi'] }}</p>
-                            <p class="text-[11px] text-slate-400">Perlu persetujuan</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs relative flex items-center gap-4">
-                        <a href="#" class="absolute top-3 right-4 text-[11px] font-medium text-blue-600 hover:underline">Lihat Semua</a>
-                        <div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-                        </div>
-                        <div>
-                            <p class="text-xs font-medium text-slate-500">Selesai</p>
-                            <p class="text-2xl font-bold text-slate-800 my-0.5">{{ $stats['selesai'] }}</p>
-                            <p class="text-[11px] text-slate-400">Reservasi selesai</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GRID BAWAH: KIRI (LAB & INFO) | KANAN (RESERVASI & KALENDER) -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-                    <!-- KOLOM KIRI (8 Kolom) -->
-                    <div class="lg:col-span-8 space-y-6">
-
-                        <!-- Laboratorium Terpopuler -->
-                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs">
-                            <div class="flex items-center justify-between mb-4">
-                                <h2 class="font-bold text-base text-[#0B2545]">Laboratorium Terpopuler</h2>
-                                <a href="#" class="text-xs font-medium text-blue-600 hover:underline flex items-center gap-1">
-                                    <span>Lihat Semua</span>
-                                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                                </a>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-                                @foreach ($laboratorium as $lab)
-                                <div class="border border-slate-200 rounded-xl overflow-hidden flex flex-col justify-between bg-white hover:shadow-md transition">
-                                    <div>
-                                        <img src="{{ $lab['gambar'] }}" alt="{{ $lab['nama'] }}" class="w-full h-28 object-cover">
-                                        <div class="p-3.5">
-                                            <h3 class="font-bold text-sm text-slate-800 mb-2">{{ $lab['nama'] }}</h3>
-                                            <div class="space-y-1.5 text-[11px] text-slate-500">
-                                                <div class="flex items-center gap-1.5">
-                                                    <i data-lucide="users" class="w-3.5 h-3.5 text-slate-400"></i>
-                                                    <span>{{ $lab['kapasitas'] }}</span>
-                                                </div>
-                                                <div class="flex items-center gap-1.5">
-                                                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
-                                                    <span>{{ $lab['lokasi'] }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="px-3.5 pb-3.5">
-                                        <a href="#" class="w-full py-2 px-3 bg-[#EBF3FE] hover:bg-blue-100 text-[#1565C0] font-medium text-xs rounded-lg flex items-center justify-center gap-1.5 transition">
-                                            <span>Lihat Detail</span>
-                                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-                        <!-- Banner Informasi -->
-                        <div class="bg-[#EBF3FE] border border-blue-200/70 rounded-xl p-4 flex items-center gap-3.5">
-                            <div class="w-8 h-8 rounded-full bg-blue-100 text-[#1565C0] flex items-center justify-center shrink-0">
-                                <i data-lucide="info" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-[#0B2545]">Informasi</h4>
-                                <p class="text-xs text-slate-600 mt-0.5">Pastikan Anda melakukan reservasi sesuai dengan jadwal dan ketentuan yang berlaku.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- KOLOM KANAN (4 Kolom) -->
-                    <div class="lg:col-span-4 space-y-6">
-
-                        <!-- Reservasi Terbaru -->
-                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs">
-                            <div class="flex items-center justify-between mb-4">
-                                <h2 class="font-bold text-base text-[#0B2545]">Reservasi Terbaru</h2>
-                                <a href="#" class="text-xs font-medium text-blue-600 hover:underline">Lihat Semua</a>
-                            </div>
-
-                            <div class="divide-y divide-slate-100">
-                                @foreach ($reservasi_terbaru as $item)
-                                <a href="#" class="py-3 first:pt-0 last:pb-0 flex items-center justify-between group">
-                                    <div class="space-y-1.5">
-                                        <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold {{ $item['badge_bg'] }}">
-                                            {{ $item['status'] }}
-                                        </span>
-                                        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-800 group-hover:text-blue-600 transition">
-                                            <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-slate-400"></i>
-                                            <span>{{ $item['lab'] }}</span>
-                                        </div>
-                                        <div class="flex items-center gap-2 text-[11px] text-slate-400">
-                                            <span class="flex items-center gap-1">
-                                                <i data-lucide="calendar" class="w-3 h-3"></i>
-                                                {{ $item['tanggal'] }}
-                                            </span>
-                                            <span>|</span>
-                                            <span>{{ $item['waktu'] }}</span>
-                                        </div>
-                                    </div>
-                                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400 group-hover:text-slate-700"></i>
-                                </a>
-                                @endforeach
-                            </div>
-                        </div>
-
-                        <!-- Kalender Reservasi -->
-                        <div class="bg-white p-5 rounded-xl border border-slate-200/80 shadow-xs">
-                            <div class="flex items-center gap-2 mb-4">
-                                <i data-lucide="calendar" class="w-4 h-4 text-[#0B2545]"></i>
-                                <h2 class="font-bold text-sm text-[#0B2545]">Kalender Reservasi</h2>
-                            </div>
-
-                            <!-- Navigasi Bulan -->
-                            <div class="flex items-center justify-between mb-3 px-1">
-                                <button class="p-1 hover:bg-slate-100 rounded text-slate-500">
-                                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                                </button>
-                                <span class="text-xs font-bold text-slate-800">November 2024</span>
-                                <button class="p-1 hover:bg-slate-100 rounded text-slate-500">
-                                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                                </button>
-                            </div>
-
-                            <!-- Grid Hari -->
-                            <div class="grid grid-cols-7 text-center text-[10px] font-medium text-slate-400 mb-2">
-                                <div>Sen</div>
-                                <div>Sel</div>
-                                <div>Rab</div>
-                                <div>Kam</div>
-                                <div>Jum</div>
-                                <div>Sab</div>
-                                <div>Min</div>
-                            </div>
-
-                            <!-- Grid Tanggal (November 2024 dimulai hari Jumat) -->
-                            <div class="grid grid-cols-7 text-center text-xs gap-y-1.5 items-center">
-                                <span class="text-slate-300">28</span>
-                                <span class="text-slate-300">29</span>
-                                <span class="text-slate-300">30</span>
-                                <span class="text-slate-300">31</span>
-                                <span class="py-1 text-slate-700">1</span>
-                                <span class="py-1 text-slate-700">2</span>
-                                <span class="py-1 text-slate-700">3</span>
-
-                                <!-- Tanggal 4 Aktif (Lingkaran Biru) -->
-                                <div class="flex justify-center">
-                                    <span class="w-7 h-7 rounded-full bg-[#1565C0] text-white font-semibold flex items-center justify-center shadow-xs">4</span>
-                                </div>
-                                <span class="py-1 text-slate-700 font-medium">5</span>
-                                <span class="py-1 text-slate-700">6</span>
-                                <span class="py-1 text-slate-700">7</span>
-                                <span class="py-1 text-slate-700">8</span>
-                                <span class="py-1 text-slate-700">9</span>
-                                <span class="py-1 text-slate-700">10</span>
-
-                                <span class="py-1 text-slate-700">11</span>
-                                <span class="py-1 text-slate-700">12</span>
-                                <span class="py-1 text-slate-700">13</span>
-                                <span class="py-1 text-slate-700">14</span>
-                                <span class="py-1 text-slate-700">15</span>
-                                <span class="py-1 text-slate-700">16</span>
-                                <span class="py-1 text-slate-700">17</span>
-
-                                <span class="py-1 text-slate-700">18</span>
-                                <span class="py-1 text-slate-700">19</span>
-                                <span class="py-1 text-slate-700">20</span>
-                                <span class="py-1 text-slate-700">21</span>
-                                <span class="py-1 text-slate-700">22</span>
-                                <span class="py-1 text-slate-700">23</span>
-                                <span class="py-1 text-slate-700">24</span>
-
-                                <span class="py-1 text-slate-700">25</span>
-                                <span class="py-1 text-slate-700">26</span>
-                                <span class="py-1 text-slate-700">27</span>
-                                <span class="py-1 text-slate-700">28</span>
-                                <span class="py-1 text-slate-700">29</span>
-                                <span class="py-1 text-slate-700">30</span>
-                                <span class="text-slate-300">1</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </main>
-        </div>
+    <div class="brand">
+        Politeknik <span>Caltex Riau</span>
     </div>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <nav class="menu">
+
+        <a href="/dashboard" class="active">
+            <span class="menu-icon">⌂</span>
+            Dashboard
+        </a>
+
+        <a href="/laboratorium">
+            <span class="menu-icon">⚗</span>
+            Laboratorium
+        </a>
+
+        <a href="/reservasi">
+            <span class="menu-icon">▣</span>
+            Reservasi
+        </a>
+
+        <a href="/riwayat-reservasi">
+            <span class="menu-icon">▤</span>
+            Riwayat Reservasi
+        </a>
+
+    </nav>
+
+    <div class="logout">
+        <a href="/login">⇥ &nbsp; Keluar</a>
+    </div>
+
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="hamburger">☰</div>
+
+        <div class="profile-area">
+            <div class="notification">♧</div>
+            <div class="profile">♙</div>
+            <span style="color:#7890aa">⌄</span>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="content">
+
+        <!-- WELCOME -->
+        <div class="welcome">
+            <div>
+                <h1>Selamat Datang!</h1>
+                <p>
+                    Berikut adalah informasi dan ringkasan reservasi laboratorium Anda.
+                </p>
+            </div>
+
+            <div class="date">
+                📅 <span id="tanggal"></span>
+            </div>
+        </div>
+
+        <!-- STATISTIK -->
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon blue">⚗</div>
+                <div>
+                    <div class="stat-text">Total Laboratorium</div>
+                    <div class="stat-number">4</div>
+                    <div class="stat-description">Laboratorium tersedia</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">▣</div>
+                <div>
+                    <div class="stat-text">Reservasi Saya</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-description">Reservasi aktif</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">◷</div>
+                <div>
+                    <div class="stat-text">Menunggu Konfirmasi</div>
+                    <div class="stat-number">1</div>
+                    <div class="stat-description">Perlu persetujuan</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon purple">✓</div>
+                <div>
+                    <div class="stat-text">Reservasi Selesai</div>
+                    <div class="stat-number">3</div>
+                    <div class="stat-description">Reservasi selesai</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LABORATORIUM -->
+        <div class="section">
+
+            <div class="section-header">
+                <h2>Laboratorium Berdasarkan Program Studi</h2>
+                <a href="/laboratorium">Lihat Semua →</a>
+            </div>
+
+            <div class="lab-grid">
+
+                <!-- TEKNIK INFORMATIKA -->
+                <div class="lab-card">
+
+                    <div class="lab-banner banner-ti">
+                        💻
+                    </div>
+
+                    <div class="lab-info">
+                        <h3>Laboratorium Teknik Informatika</h3>
+
+                        <span class="department">
+                            Teknik Informatika
+                        </span>
+
+                        <p>
+                            Laboratorium untuk pemrograman, pengembangan aplikasi,
+                            praktikum web, dan pengembangan perangkat lunak.
+                        </p>
+
+                        <div class="lab-details">
+                            <span>♙ Kapasitas 30 orang</span>
+                            <span>⌖ Gedung A, Lantai 2</span>
+                        </div>
+
+                        <a href="/reservasi" class="lab-button">
+                            Lihat Detail →
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- SISTEM INFORMASI -->
+                <div class="lab-card">
+
+                    <div class="lab-banner banner-si">
+                        📊
+                    </div>
+
+                    <div class="lab-info">
+                        <h3>Laboratorium Sistem Informasi</h3>
+
+                        <span class="department">
+                            Sistem Informasi
+                        </span>
+
+                        <p>
+                            Laboratorium untuk basis data, analisis sistem,
+                            pengolahan data, dan perancangan sistem informasi.
+                        </p>
+
+                        <div class="lab-details">
+                            <span>♙ Kapasitas 25 orang</span>
+                            <span>⌖ Gedung A, Lantai 1</span>
+                        </div>
+
+                        <a href="/reservasi" class="lab-button">
+                            Lihat Detail →
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- TRK -->
+                <div class="lab-card">
+
+                    <div class="lab-banner banner-trk">
+                        🖥️
+                    </div>
+
+                    <div class="lab-info">
+                        <h3>Laboratorium Teknologi Rekayasa Komputer</h3>
+
+                        <span class="department">
+                            Teknologi Rekayasa Komputer
+                        </span>
+
+                        <p>
+                            Laboratorium untuk jaringan komputer, sistem komputer,
+                            perangkat keras, mikrokontroler, dan IoT.
+                        </p>
+
+                        <div class="lab-details">
+                            <span>♙ Kapasitas 20 orang</span>
+                            <span>⌖ Gedung B, Lantai 2</span>
+                        </div>
+
+                        <a href="/reservasi" class="lab-button">
+                            Lihat Detail →
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- ANIMASI -->
+                <div class="lab-card">
+
+                    <div class="lab-banner banner-animasi">
+                        🎨
+                    </div>
+
+                    <div class="lab-info">
+                        <h3>Laboratorium Animasi & Multimedia</h3>
+
+                        <span class="department">
+                            Animasi
+                        </span>
+
+                        <p>
+                            Laboratorium untuk desain grafis, animasi 2D dan 3D,
+                            editing video, serta produksi multimedia.
+                        </p>
+
+                        <div class="lab-details">
+                            <span>♙ Kapasitas 25 orang</span>
+                            <span>⌖ Gedung B, Lantai 1</span>
+                        </div>
+
+                        <a href="/reservasi" class="lab-button">
+                            Lihat Detail →
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RESERVASI TERBARU -->
+        <div class="section">
+
+            <div class="section-header">
+                <h2>Reservasi Terbaru</h2>
+                <a href="/riwayat-reservasi">Lihat Semua →</a>
+            </div>
+
+            <div style="overflow-x:auto">
+
+                <table class="reservation-table">
+
+                    <thead>
+                        <tr>
+                            <th>Laboratorium</th>
+                            <th>Tanggal</th>
+                            <th>Waktu</th>
+                            <th>Keperluan</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Lab Teknik Informatika</td>
+                            <td>12 Nov 2024</td>
+                            <td>08.00 - 10.00</td>
+                            <td>Praktikum Pemrograman Web</td>
+                            <td><span class="badge confirmed">Dikonfirmasi</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Lab Sistem Informasi</td>
+                            <td>7 Nov 2024</td>
+                            <td>10.00 - 12.00</td>
+                            <td>Praktikum Basis Data</td>
+                            <td><span class="badge pending">Menunggu</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Lab Animasi & Multimedia</td>
+                            <td>5 Nov 2024</td>
+                            <td>13.00 - 15.00</td>
+                            <td>Praktikum Animasi 3D</td>
+                            <td><span class="badge completed">Selesai</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- INFORMASI -->
+        <div class="info-box">
+
+            <div class="info-icon">ⓘ</div>
+
+            <div>
+                <h3>Informasi</h3>
+                <p>
+                    Pastikan Anda melakukan reservasi sesuai dengan jadwal
+                    laboratorium dan ketentuan yang berlaku.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+    // Menampilkan tanggal
+    const tanggal = new Date();
+
+    document.getElementById("tanggal").textContent =
+        tanggal.toLocaleDateString("id-ID", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+</script>
+
 </body>
 </html>

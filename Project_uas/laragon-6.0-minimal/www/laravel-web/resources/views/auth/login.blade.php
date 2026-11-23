@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -13,170 +14,185 @@
             font-family: Arial, sans-serif;
         }
 
-      body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: white;
-}
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
 
-/* Background utama */
-.container {
-    width: 100%;
-    max-width: 900px;
-    height: 600px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(
-        120deg,
-        #edf5fd,
-        #ffffff,
-        #edf5fd
-    );
-}
+        .container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+                120deg,
+                #edf5fd,
+                #ffffff,
+                #edf5fd
+            );
+        }
 
-/* Lengkungan kiri atas */
-.circle-top {
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    background: #e2eefb;
-    border-radius: 50%;
-    top: -195px;
-    left: -180px;
-}
+        .circle-top {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: #e2eefb;
+            border-radius: 50%;
+            top: -195px;
+            left: -180px;
+        }
 
-/* Lengkungan kanan bawah */
-.circle-bottom {
-    position: absolute;
-    width: 500px;
-    height: 230px;
-    background: #e2eefb;
-    border-radius: 50%;
-    bottom: -150px;
-    right: -110px;
-    transform: rotate(-22deg);
-}
+        .circle-bottom {
+            position: absolute;
+            width: 500px;
+            height: 230px;
+            background: #e2eefb;
+            border-radius: 50%;
+            bottom: -150px;
+            right: -110px;
+            transform: rotate(-22deg);
+        }
 
-/* Konten login */
-.login-content {
-    width: 340px;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
+        .login-content {
+            width: 340px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
 
-/* Logo */
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    font-style: italic;
-    color: #164d6b;
-    margin-bottom: 28px;
-}
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            font-style: italic;
+            color: #164d6b;
+            margin-bottom: 28px;
+        }
 
-/* Kotak login */
-.login-box {
-    width: 340px;
-    height: auto;
-    background: white;
-    padding: 28px 25px;
-    border-radius: 7px;
-    box-shadow: 0 4px 18px rgba(42,83,130,0.07);
-}
+        .login-box {
+            width: 340px;
+            height: auto;
+            background: white;
+            padding: 28px 25px;
+            border-radius: 7px;
+            box-shadow: 0 4px 18px rgba(42,83,130,0.07);
+        }
 
-.login-box h2 {
-    font-size: 19px;
-    color: #304c70;
-    margin-bottom: 8px;
-}
+        .login-box h2 {
+            font-size: 19px;
+            color: #304c70;
+            margin-bottom: 8px;
+        }
 
-.subtitle {
-    font-size: 11px;
-    color: #a0aebe;
-    margin-bottom: 22px;
-}
+        .subtitle {
+            font-size: 11px;
+            color: #a0aebe;
+            margin-bottom: 22px;
+        }
 
-/* Input */
-.input-group {
-    position: relative;
-    margin-bottom: 12px;
-}
+        .input-group {
+            position: relative;
+            margin-bottom: 12px;
+        }
 
-.input-group input {
-    width: 100%;
-    height: 36px;
-    border: 1px solid #e3e9f0;
-    border-radius: 5px;
-    padding: 0 35px;
-    font-size: 11px;
-    outline: none;
-}
+        .input-group input {
+            width: 100%;
+            height: 36px;
+            border: 1px solid #e3e9f0;
+            border-radius: 5px;
+            padding: 0 35px;
+            font-size: 11px;
+            outline: none;
+        }
 
-.input-icon {
-    position: absolute;
-    left: 12px;
-    top: 11px;
-    font-size: 12px;
-    color: #8194aa;
-}
+        .input-group input:focus {
+            border-color: #2861b8;
+        }
 
-.eye {
-    position: absolute;
-    right: 12px;
-    top: 10px;
-    font-size: 12px;
-    cursor: pointer;
-    color: #8194aa;
-}
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 11px;
+            font-size: 12px;
+            color: #8194aa;
+        }
 
-/* Pilihan pengguna */
-.role-title {
-    text-align: left;
-    font-size: 11px;
-    color: #52647b;
-    margin-top: 17px;
-    margin-bottom: 10px;
-}
+        .eye {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            color: #8194aa;
+        }
 
-.role-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
-    font-size: 11px;
-    color: #52647b;
-}
+        .role-title {
+            text-align: left;
+            font-size: 11px;
+            color: #52647b;
+            margin-top: 17px;
+            margin-bottom: 10px;
+        }
 
-.role-group input {
-    accent-color: #2862b7;
-}
+        .role-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            font-size: 11px;
+            color: #52647b;
+        }
 
-/* Tombol */
-.btn-login {
-    width: 100%;
-    height: 36px;
-    border: none;
-    border-radius: 5px;
-    background: #2861b8;
-    color: white;
-    font-size: 11px;
-    cursor: pointer;
-}
+        .role-group input {
+            accent-color: #2862b7;
+            cursor: pointer;
+        }
 
-/* Footer */
-.footer {
-    margin-top: 65px;
-    font-size: 9px;
-    color: #9baec2;
-}
+        .role-group label {
+            cursor: pointer;
+        }
+
+        .btn-login {
+            width: 100%;
+            height: 36px;
+            border: none;
+            border-radius: 5px;
+            background: #2861b8;
+            color: white;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background: #1d4f9c;
+        }
+
+        .btn-login:active {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            margin-top: 65px;
+            font-size: 9px;
+            color: #9baec2;
+        }
 
         @media (max-width: 403px) {
             .container {
+                width: 100%;
+            }
+
+            .login-content {
+                width: 90%;
+            }
+
+            .login-box {
                 width: 100%;
             }
         }
@@ -204,19 +220,26 @@
                 Silakan masuk untuk melanjutkan ke sistem
             </div>
 
-            <form>
+            <form id="loginForm">
 
                 <div class="input-group">
                     <span class="input-icon">♙</span>
+
                     <input type="text"
-                           placeholder="Email atau Username">
+                           name="username"
+                           id="username"
+                           placeholder="Email atau Username"
+                           required>
                 </div>
 
                 <div class="input-group">
                     <span class="input-icon">♙</span>
+
                     <input type="password"
+                           name="password"
                            id="password"
-                           placeholder="Password">
+                           placeholder="Password"
+                           required>
 
                     <span class="eye"
                           onclick="togglePassword()">◉</span>
@@ -252,7 +275,7 @@
 
                 </div>
 
-                <button type="button" class="btn-login">
+                <button type="submit" class="btn-login">
                     Masuk
                 </button>
 
@@ -275,6 +298,26 @@
         password.type =
             password.type === "password" ? "text" : "password";
     }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const role = document.querySelector('input[name="role"]:checked').value;
+
+        if (username === "" || password === "") {
+            alert("Email/Username dan Password harus diisi!");
+            return;
+        }
+
+        alert(
+            "Tombol Masuk berhasil diklik!\n" +
+            "Username: " + username + "\n" +
+            "Jenis pengguna: " + role + "\n\n" +
+            "Form sudah berfungsi, tetapi proses autentikasi Laravel belum dihubungkan."
+        );
+    });
 </script>
 
 </body>
